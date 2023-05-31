@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-pod
+  labels:
+    app: client-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-pod
+  template:
+    metadata:
+      labels:
+        app: client-pod
+    spec:
+      containers:
+      - name: client-pod
+        image: gabryv/progettone:latest
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
