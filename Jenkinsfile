@@ -1,47 +1,33 @@
-/*pipeline {
-environment {
-dockerimagename = "gabryv/progettone"
-dockerImage = ""
-}
-
-*/
-pipeline{
-agent any
-
-/*
-stages {
-
-stage('Checkout Source') {
-steps {
-container('docker') {
-git branch: 'main', credentialsId: 'github-credentials', url: 'git@github.com:gabryvv/progettone-serio.git'
-}
-}
-}*/
-
-    stages {
-        stage("Clone Git Repository") {
-            steps {
-                git(
-                    url: "https://github.com/gabryvv/progettone-serio.git",
-                    branch: "main",
-                    changelog: true,
-                    poll: true
-                )
-            }
+pipeline {
+  environment {
+    dockerimagename = "bravinwasike/react-app"
+    dockerImage = ""
+  }
+  agent any
+  stages {
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/Bravinsimiyu/jenkins-kubernetes-deployment.git'
+      }
+    }
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerimagename
         }
-
-stage('Build image') {
-steps{
-container('docker') {
-script {
-sh 'docker build -t gabryv/progettone .'
-}
-}
-}
-}
-
-
-}
-
+      }
+    }
+    stage('Pushing Image') {
+      environment {
+               registryCredential = 'dockerhub-credentials'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'https://registry.hub.docker.com/', registryCredential ) {
+            dockerImage.push("latest")
+          }
+        }
+      }
+    }
+  }
 }
