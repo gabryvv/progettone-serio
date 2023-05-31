@@ -6,7 +6,7 @@ dockerImage = ""
 
 agent
   {
-  dockerfile true
+  docker { image 'node:18.16.0-alpine' }
   }
 
 stages {
