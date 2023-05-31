@@ -11,7 +11,7 @@ stages {
 stage('Checkout Source') {
 steps {
 container('docker') {
-git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/gabryvv/PROGETTONE.git'
+git branch: 'main', credentialsId: 'github-credentials', url: 'git@github.com:gabryvv/progettone-serio.git'
 }
 }
 }
