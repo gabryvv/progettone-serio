@@ -45,4 +45,3 @@ sh 'docker build -t gabryv/progettone .'
 }
 
 }
-}
