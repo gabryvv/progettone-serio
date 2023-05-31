@@ -1,47 +1,28 @@
-/*pipeline {
+pipeline {
 environment {
 dockerimagename = "gabryv/progettone"
 dockerImage = ""
 }
 
-*/
-pipeline{
-agent any
+agent
+  {
+  dockerfile true
+  }
 
-/*
 stages {
 
 stage('Checkout Source') {
-steps {
-container('docker') {
-git branch: 'main', credentialsId: 'github-credentials', url: 'git@github.com:gabryvv/progettone-serio.git'
+ steps {
+        git branch: 'main', credentialsId: 'github-credential', url: 'https://github.com/gabryvv/progettone-serio.git'
+      }
 }
-}
-}*/
 
-    stages {
-        stage("Clone Git Repository") {
-            steps {
-                git(
-                    url: "https://github.com/gabryvv/progettone-serio.git",
-                    branch: "main",
-                    changelog: true,
-                    poll: true
-                )
-            }
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerimagename
         }
-
-stage('Build image') {
-steps{
-container('docker') {
-script {
-sh 'docker build -t gabryv/progettone .'
+      }
+    }
 }
-}
-}
-}
-
-
-}
-
 }
