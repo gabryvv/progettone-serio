@@ -20,7 +20,7 @@ stage('Build image') {
 steps{
 container('docker') {
 script {
-sh "docker build -t gabryv/progettone ."
+sh 'docker build -t gabryv/progettone .'
 }
 }
 }
