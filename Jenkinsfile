@@ -4,8 +4,7 @@ dockerimagename = "gabryv/progettone"
 dockerImage = ""
 }
 
-agent {
-}
+agent any
 
 stages {
 
