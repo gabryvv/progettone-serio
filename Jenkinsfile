@@ -26,15 +26,6 @@ sh 'docker build -t gabryv/progettone .'
 }
 }
 
-stage('Login-Docker') {
-steps {
-container('docker') {
-sh 'docker login -u <docker_username> -p <docker_password>'
-}
-}
-}
-
-
 
 }
 
