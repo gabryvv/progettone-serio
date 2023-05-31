@@ -17,13 +17,11 @@ git branch: 'main', credentialsId: 'github-credentials', url: 'git@github.com:ga
 }
 
 stage('Build image') {
-steps{
-container('docker') {
-script {
-sh 'docker build -t gabryv/progettone .'
-}
-}
-}
+    steps{
+        script {
+        dockerImage = docker.build dockerimagename
+    }
+    }
 }
 
 
