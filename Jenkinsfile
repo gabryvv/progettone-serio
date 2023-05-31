@@ -23,7 +23,7 @@ git branch: 'main', credentialsId: 'github-credentials', url: 'git@github.com:ga
         stage("Clone Git Repository") {
             steps {
                 git(
-                    url: "git@github.com:gabryvv/progettone-serio.git",
+                    url: "https://github.com/gabryvv/progettone-serio.git",
                     branch: "main",
                     changelog: true,
                     poll: true
