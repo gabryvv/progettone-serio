@@ -37,7 +37,9 @@ sh 'docker login -u <docker_username> -p <docker_password>'
 stage('Push-Images-Docker-to-DockerHub') {
 steps {
 container('docker') {
+script {
 sh 'docker push gabryv/progettone:latest'
+}
 }
 }
 }
