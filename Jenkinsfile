@@ -3,7 +3,18 @@ pipeline {
     dockerimagename = "gabryvv/progettone"
     dockerImage = ""
   }
-  agent any
+  
+  
+  
+  agent {
+        docker {
+            image 'ubuntu'
+            args '-u root:sudo -v $HOME/workspace/myproject:/myproject'
+        }
+  }
+  
+  
+  
   stages {
     stage('Checkout Source') {
       steps {
@@ -11,15 +22,13 @@ pipeline {
       }
     }
     
-    stage('installa docker sul nodo? forse') {
-      steps {
-        sh '''
-            #!/bin/bash
-            sudo apt install docker
-            echo "docker installato sium"
-         '''
-      }
-    }
+    stage("setup_env") {
+            steps {
+                sh 'apt-get update -y'
+                sh 'apt install docker'
+            }
+        }
+
     
     stage('Build image') {
       steps{
