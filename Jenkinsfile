@@ -8,18 +8,15 @@ pipeline {
   
   
   agent {
-        docker { image 'node:18.16.0-alpine' }
-    }
-  
+        docker {
+            image 'maven:3.9.0-eclipse-temurin-11'
+            args '-v $HOME/.m2:/root/.m2'
+        }
+  }
   
   
   stages {
-    
-    stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+   
     
     
     stage('Checkout Source') {
