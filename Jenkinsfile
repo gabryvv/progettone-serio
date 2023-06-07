@@ -10,7 +10,6 @@ pipeline {
   agent {
         docker {
             image 'ubuntu'
-            args '-u root:sudo -v $HOME/workspace/myproject:/myproject'
         }
   }
   
