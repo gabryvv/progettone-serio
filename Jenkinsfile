@@ -8,9 +8,7 @@ pipeline {
   
   
   agent {
-        docker {
-            image 'ubuntu'
-        }
+    docker { image 'node:18.16.0-alpine' }
   }
   
   
