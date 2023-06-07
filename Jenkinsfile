@@ -24,6 +24,12 @@ pipeline {
     
    
 
+     stage("installazione docker sul nodo") {
+            steps {
+                sh 'apt install docker'
+            }
+        }
+    
     
     stage('Build image') {
       steps{
