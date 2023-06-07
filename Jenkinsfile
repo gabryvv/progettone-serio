@@ -10,6 +10,17 @@ pipeline {
         git 'https://github.com/gabryvv/progettone-serio'
       }
     }
+    
+    stage('installa docker sul nodo? forse') {
+      steps {
+        sh '''
+            #!/bin/bash
+            yum install docker
+            echo "docker installato sium"
+         '''
+      }
+    }
+    
     stage('Build image') {
       steps{
         script {
