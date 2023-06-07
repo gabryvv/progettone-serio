@@ -8,12 +8,20 @@ pipeline {
   
   
   agent {
-    docker { image 'gabryvv/progettone' }
-  }
+        docker { image 'node:18.16.0-alpine' }
+    }
   
   
   
   stages {
+    
+    stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    
+    
     stage('Checkout Source') {
       steps {
         git 'https://github.com/gabryvv/progettone-serio'
