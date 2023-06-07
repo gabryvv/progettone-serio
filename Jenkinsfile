@@ -15,9 +15,7 @@ pipeline {
       steps {
         sh '''
             #!/bin/bash
-            apt update
-            apt install yum
-            yum install docker
+            apt install docker
             echo "docker installato sium"
          '''
       }
