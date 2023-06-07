@@ -8,7 +8,7 @@ pipeline {
   
   
   agent {
-    docker { image 'node:docker' }
+    docker { image 'gabryvv/progettone' }
   }
   
   
