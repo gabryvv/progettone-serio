@@ -27,6 +27,7 @@ pipeline {
      stage("installazione docker sul nodo") {
             steps {
                 sh 'apt install docker'
+                sh 'echo docker -v'
             }
         }
     
