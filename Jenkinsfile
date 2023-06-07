@@ -23,12 +23,7 @@ pipeline {
       }
     }
     
-    stage("setup_env") {
-            steps {
-                sh 'apt-get update -y'
-                sh 'apt install docker'
-            }
-        }
+   
 
     
     stage('Build image') {
